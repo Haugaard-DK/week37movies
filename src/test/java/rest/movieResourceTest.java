@@ -107,6 +107,16 @@ public class movieResourceTest {
         .statusCode(HttpStatus.OK_200.getStatusCode())
         .body("count", equalTo(2));   
     }
+    @Disabled
+    @Test
+    public void testSpecificTitle() throws Exception {
+        given()
+        .contentType("application/json")
+        .get("/movie/title/spanden").then()
+                .assertThat()
+                .statusCode(HttpStatus.OK_200.getStatusCode())
+                .body("id", equalTo(m1.getId().longValue()));
+    }
     
     @Test
     public void testGetAllMovies() throws Exception {

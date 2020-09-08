@@ -14,7 +14,7 @@ import java.util.StringJoiner;
  */
 public class MovieDTO {
     
-    private Long id;
+    private long id;
     private int year;
     private String title;
     private String actors;
@@ -30,11 +30,11 @@ public class MovieDTO {
       this.actors = joiner.toString();
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

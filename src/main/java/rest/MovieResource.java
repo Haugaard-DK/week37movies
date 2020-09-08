@@ -1,6 +1,5 @@
 package rest;
 
-import DTOs.MovieDTO;
 import DTOs.MoviesDTO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

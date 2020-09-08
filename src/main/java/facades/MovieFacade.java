@@ -74,7 +74,7 @@ public class MovieFacade {
         EntityManager em = emf.createEntityManager();
         try {
               Query query = em.createNamedQuery("Movie.getByTitle");
-              query.setParameter("name", title);
+              query.setParameter("title", title);
               List<Movie> movieList = query.getResultList();
               return movieList;
         }         

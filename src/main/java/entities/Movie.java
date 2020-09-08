@@ -13,7 +13,8 @@ import javax.persistence.NamedQuery;
 @NamedQueries({
 @NamedQuery(name = "Movie.deleteAllRows", query = "DELETE from Movie"),
 @NamedQuery(name = "Movie.getAll", query = "SELECT m FROM Movie m"),
-@NamedQuery(name = "Movie.getByTitle", query = "SELECT m FROM Movie m WHERE m.title LIKE :title")
+@NamedQuery(name = "Movie.getByTitle", query = "SELECT m FROM Movie m WHERE m.title LIKE CONCAT('%',:title,'%')"),
+@NamedQuery(name = "Movie.getById", query = "SELECT m FROM Movie m WHERE m.id = :id")
 })
 public class Movie implements Serializable {
 
@@ -24,7 +25,6 @@ public class Movie implements Serializable {
     private int year;
     private String title;
     private String[] actors;
-    
     
 
     public Movie(int year, String title, String[] actors) {
