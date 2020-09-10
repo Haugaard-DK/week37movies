@@ -5,6 +5,7 @@ import utils.EMF_Creator;
 import io.restassured.RestAssured;
 import static io.restassured.RestAssured.given;
 import io.restassured.parsing.Parser;
+import java.io.IOException;
 import java.net.URI;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -41,12 +42,14 @@ public class movieResourceTest {
     }
 
     @BeforeAll
-    public static void setUpClass() {
+    public static void setUpClass() throws IOException {
         //This method must be called before you request the EntityManagerFactory
         EMF_Creator.startREST_TestWithDB();
         emf = EMF_Creator.createEntityManagerFactoryForTest();
         
         httpServer = startServer();
+        httpServer.start();
+        while(!httpServer.isStarted()){} 
         //Setup RestAssured
         RestAssured.baseURI = SERVER_URL;
         RestAssured.port = SERVER_PORT;
