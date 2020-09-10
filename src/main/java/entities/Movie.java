@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
-
 @Entity
 @NamedQueries({
 @NamedQuery(name = "Movie.deleteAllRows", query = "DELETE from Movie"),

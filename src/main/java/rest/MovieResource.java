@@ -79,4 +79,12 @@ public class MovieResource {
         FACADE.populateDB();
         return "{\"msg\":\"3 rows added\"}";
     }
+    
+     @GET
+    @Path("/piphans")
+    @Produces({MediaType.APPLICATION_JSON})
+    public String piphans() {
+        
+        return "{\"msg\":\"Vi bør afskaffe burhøns, siger piphans\",\"tlf\":\"1010101\"}";
+    }
 }

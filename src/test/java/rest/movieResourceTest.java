@@ -27,7 +27,7 @@ public class movieResourceTest {
 
     private static final int SERVER_PORT = 7777;
     private static final String SERVER_URL = "http://localhost/api";
-    private static Movie m1 = new Movie(1972, "Olsenbanden på spanden", new String[]{"Egon Olsen","Benny"});
+    private static Movie m1 = new Movie(1972, "Olsenbanden på spanden", new String[]{"Egon Olsen","Benny","Yvonne"});
     private static Movie m2 = new Movie(1975, "Olsenbanden slår igen", new String[]{"Egon Olsen","Kjeld"});
     
     
@@ -107,22 +107,23 @@ public class movieResourceTest {
         .statusCode(HttpStatus.OK_200.getStatusCode())
         .body("count", equalTo(2));   
     }
-    @Disabled
+    //@Disabled
     @Test
     public void testSpecificTitle() throws Exception {
         given()
         .contentType("application/json")
         .get("/movie/title/spanden").then()
-                .assertThat()
-                .statusCode(HttpStatus.OK_200.getStatusCode())
-                .body("id", equalTo(m1.getId().longValue()));
+        .assertThat()
+        .statusCode(HttpStatus.OK_200.getStatusCode())
+        .body("[0].id", equalTo(m1.getId().intValue()));
     }
     
     @Test
     public void testGetAllMovies() throws Exception {
         given()
-        .contentType("application/json")
-        .get("/movie/all").then()
+            .contentType("application/json")
+        .get("/movie/all")
+        .then()
         .assertThat()
         .statusCode(HttpStatus.OK_200.getStatusCode())
         .body("size()", is(2))
